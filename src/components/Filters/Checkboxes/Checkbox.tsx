@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface Props {
   id: string;
@@ -6,9 +6,15 @@ interface Props {
 }
 
 export const Checkbox: React.FC<Props> = ({ id, text }) => {
+  const [checked, setChecked] = useState<boolean>(true);
   return (
     <div>
-      <input type="checkbox" id={id} />
+      <input
+        type="checkbox"
+        id={id}
+        checked={checked}
+        onChange={() => setChecked((prev) => !prev)}
+      />
       <label htmlFor={id}>{text}</label>
     </div>
   );
