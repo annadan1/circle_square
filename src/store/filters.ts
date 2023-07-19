@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface InitialState {
-  shapes: string[];
+  forms: string[];
   colors: string[];
   shades: string;
   columns: number;
 }
 
 const initialState: InitialState = {
-  shapes: [],
+  forms: [],
   colors: [],
   shades: "all",
   columns: 4,
@@ -25,13 +25,13 @@ const filterSlice = createSlice({
       state.columns = payload;
     },
     addShapes: (state, { payload }: PayloadAction<string[]>) => {
-      state.shapes = [...state.shapes, ...payload];
+      state.forms = [...state.forms, ...payload];
     },
     addColors: (state, { payload }: PayloadAction<string[]>) => {
       state.colors = [...state.colors, ...payload];
     },
     deleteShapes: (state, { payload }: PayloadAction<string>) => {
-      state.shapes = state.shapes.filter((el) => el !== payload);
+      state.forms = state.forms.filter((el) => el !== payload);
     },
     deleteColors: (state, { payload }: PayloadAction<string>) => {
       state.colors = state.colors.filter((el) => el !== payload);
