@@ -1,3 +1,5 @@
+import { Figure } from "../types/store";
+
 interface Rules {
   [key: string]: string[] | boolean[];
   form: string[];
@@ -5,10 +7,7 @@ interface Rules {
   dark: boolean[] | string[];
 }
 
-interface Item {
-  form: string;
-  color: string;
-  dark: boolean;
+interface Item extends Figure {
   [key: string]: any | never;
 }
 

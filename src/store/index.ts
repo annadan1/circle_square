@@ -4,8 +4,8 @@ import figuresReducer from "./figures";
 
 export const store = configureStore({
   reducer: {
-    filtersReducer,
-    figuresReducer,
+    filters: filtersReducer,
+    figures: figuresReducer,
   },
 });
 

@@ -6,6 +6,7 @@ import { Menu } from "./components/Menu/Menu";
 import { useValidate } from "./hooks/useValidate";
 import { useDispatch } from "react-redux";
 import { actions } from "./store/figures";
+import { Main } from "./components/Main/Main";
 
 const App: React.FC = () => {
   const res = useValidate(db);
@@ -19,7 +20,7 @@ const App: React.FC = () => {
     <div className={styles.container}>
       <Header />
       <Menu />
-      <main></main>
+      <Main />
       <header></header>
     </div>
   );
