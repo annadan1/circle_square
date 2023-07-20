@@ -5,15 +5,12 @@ interface Rules {
   dark: boolean[] | string[];
 }
 
-interface Item {
+interface Items {
   form: string;
   color: string;
   dark: boolean;
+  [key: string]: any | never;
 }
-
-type ExpectedTypes = {
-  [K in keyof Rules]: K extends keyof Item ? Item[K] : never;
-};
 
 const rules: Rules = {
   form: ["circle", "square"],
@@ -21,11 +18,15 @@ const rules: Rules = {
   dark: [true, false],
 };
 
-export const useValidate = (item: ExpectedTypes): boolean => {
+const validate = (item: Items) => {
   for (let rule in rules) {
     const key = rule as keyof Rules;
     if (!item.hasOwnProperty(key)) return false;
-    if (!rules[key].includes(item[key])) return false;
+    if (!rules[key].includes(item[key] as never)) return false;
   }
   return true;
+};
+
+export const useValidate = (items: Items[]) => {
+  return items.filter((el) => validate(el));
 };
