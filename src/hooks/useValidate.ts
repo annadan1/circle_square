@@ -5,7 +5,7 @@ interface Rules {
   dark: boolean[] | string[];
 }
 
-interface Items {
+interface Item {
   form: string;
   color: string;
   dark: boolean;
@@ -18,7 +18,7 @@ const rules: Rules = {
   dark: [true, false],
 };
 
-const validate = (item: Items) => {
+const validate = (item: Item) => {
   for (let rule in rules) {
     const key = rule as keyof Rules;
     if (!item.hasOwnProperty(key)) return false;
@@ -27,6 +27,6 @@ const validate = (item: Items) => {
   return true;
 };
 
-export const useValidate = (items: Items[]) => {
+export const useValidate = (items: Item[]) => {
   return items.filter((el) => validate(el));
 };

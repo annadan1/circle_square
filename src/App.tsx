@@ -4,13 +4,16 @@ import db from "./assets/data/data.json";
 import styles from "./App.module.scss";
 import { Menu } from "./components/Menu/Menu";
 import { useValidate } from "./hooks/useValidate";
+import { useDispatch } from "react-redux";
+import { actions } from "./store/figures";
 
 const App: React.FC = () => {
-  console.log(db);
   const res = useValidate(db);
-  console.log(res);
+  const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(actions.changeFigures(res));
+  });
 
   return (
     <div className={styles.container}>
