@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from './InputForColumn.module.scss'
 
 export const InputForColumn: React.FC = () => {
   const [column, setColumn] = useState<number>(4);
@@ -9,7 +10,7 @@ export const InputForColumn: React.FC = () => {
   return (
     <>
       <label htmlFor="column">колонок</label>
-      <input type="number" id="column" value={column} onChange={handleChange} />
+      <input className={styles.inputForColumn} type="number" id="column" value={column} onChange={handleChange} />
     </>
   );
 };
