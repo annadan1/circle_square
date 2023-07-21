@@ -4,12 +4,21 @@ import { BurgerButton } from "../BurgerButton/BurgerButton";
 import { Checkbox } from "../../Filters/Checkboxes/Checkbox";
 import styles from "./BurgerMenu.module.scss";
 import { InputForColumn } from "../../Filters/InputForColumn/InputForColumn";
+import useOutsideClick from "../../../hooks/useOnclickOutside";
+import { useRef } from "react";
 
 export const BurgerMenu: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
+  const ref = useRef(null);
+
+  const handleClickOutside = () => {
+    setActive(false);
+  };
+
+  useOutsideClick(ref, handleClickOutside);
 
   return (
-    <div>
+    <div className={styles.container} ref={ref}>
       <BurgerButton handleClick={() => setActive((prev) => !prev)} />
       {active && (
         <div className={styles.menu}>

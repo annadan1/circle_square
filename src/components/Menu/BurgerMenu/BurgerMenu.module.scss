@@ -1,7 +1,12 @@
 @import "../../../styles/variables";
 
+.container {
+  position: relative;
+}
 .menu {
   background-color: $color-gray;
+  position: absolute;
+  width: 160px;
 }
 .section {
   padding: 15px;
