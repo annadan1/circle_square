@@ -4,13 +4,16 @@ import { State } from "../../types/store";
 
 export const Main: React.FC = () => {
   const { figures } = useSelector((state: State) => state.figures);
-  console.log(figures)
+
   return (
-    <>
-      {figures.map((el, id) => (
-        <div key={id} className={`${styles[el.form] + " " + styles[el.color]}`}>
-        </div>
-      ))}
-    </>
+    <div className={styles.container}>
+      {figures.map((el, id) => {
+        const color = el.dark ? styles[`dark-${el.color}`] : styles[el.color];
+        console.log(color)
+        return (
+          <div key={id} className={`${styles[el.form] + " " + color}`}></div>
+        );
+      })}
+    </div>
   );
 };

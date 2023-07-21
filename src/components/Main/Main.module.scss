@@ -1,18 +1,23 @@
 @import "../../styles/_variables";
 
+.container {
+  display: grid;
+  flex-wrap: wrap;
+  gap: 20px;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+  justify-items: center;
+}
+
 .circle {
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin: 20px;
-  gap: 30px;
+  min-width: 150px;
+  min-height: 150px;
 }
 
 .square {
-  width: 40px;
-  height: 40px;
-  gap: 30px;
-  margin: 20px;
+  min-width: 150px;
+  min-height: 150px;
 }
 
 .red {
@@ -29,4 +34,20 @@
 
 .yellow {
   background-color: $color-light-yellow;
+}
+
+.dark-red {
+    background-color: $color-dark-red;
+}
+
+.dark-blue {
+    background-color: $color-dark-blue;
+}
+
+.dark-green {
+    background-color: $color-dark-green;
+}
+
+.dark-yellow {
+    background-color: $color-dark-yellow;
 }
