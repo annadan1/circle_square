@@ -1,10 +1,23 @@
 import { useState } from "react";
+import { actions } from "../../../store/filters";
+import { useDispatch } from "react-redux";
 
 export const RadioButtons: React.FC = () => {
+  const dispatch = useDispatch();
   const [checkedId, setCheckedId] = useState<string>("all");
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let currentFilter = e.target.value;
     setCheckedId(e.target.value);
+    if (currentFilter === "all") {
+      dispatch(actions.changeDark(null));
+    }
+    if (currentFilter === "dark") {
+      dispatch(actions.changeDark(true));
+    }
+    if (currentFilter === "light") {
+      dispatch(actions.changeDark(false));
+    }
   };
 
   return (

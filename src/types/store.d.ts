@@ -2,11 +2,15 @@ export interface Figures {
   figures: Figure[];
 }
 
-export interface Filters {
+export interface Filter {
   forms: string[];
   colors: string[];
-  shades: string;
+  dark: null | boolean;
   columns: number;
+}
+
+export interface Filters {
+  filters: Filter;
 }
 
 export interface Figure {

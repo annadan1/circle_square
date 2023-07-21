@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface Figures {
-  figures: [];
-}
+import { Figures } from "../types/store";
 
 const initialState: Figures = {
   figures: [],

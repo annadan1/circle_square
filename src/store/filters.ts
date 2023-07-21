@@ -1,16 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Filter } from "../types/store";
 
-interface InitialState {
-  forms: string[];
-  colors: string[];
-  shades: string;
-  columns: number;
-}
-
-const initialState: InitialState = {
+const initialState: Filter = {
   forms: [],
   colors: [],
-  shades: "all",
+  dark: null,
   columns: 4,
 };
 
@@ -18,8 +12,8 @@ const filterSlice = createSlice({
   name: "filterSlice",
   initialState,
   reducers: {
-    changeShades: (state, { payload }: PayloadAction<string>) => {
-      state.shades = payload;
+    changeDark: (state, { payload }: PayloadAction<boolean | null>) => {
+      state.dark = payload;
     },
     changeColumns: (state, { payload }: PayloadAction<number>) => {
       state.columns = payload;
