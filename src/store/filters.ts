@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Filter } from "../types/store";
+import { Filters } from "../types/store";
 
-const initialState: Filter = {
+const initialState: Filters = {
   forms: [],
   colors: [],
   dark: null,

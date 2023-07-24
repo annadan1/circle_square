@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <Header />
       <Menu />
       <Main />
-      <header></header>
+      <footer></footer>
     </div>
   );
 };

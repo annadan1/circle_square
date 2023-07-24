@@ -1,21 +1,14 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useDispatch } from "react-redux";
-import { actions } from "../store/figures";
-import { State, Figure } from "../types/store";
+import { Filters, Figure } from "../types/store";
 
-export const useFilters = () => {
-  const { figures } = useSelector((state: State) => state.figures);
-  const { filters } = useSelector((state: State) => state.filters);
-  const dispatch = useDispatch();
-
+export const UseFilters = (figures: Figure[], filters: Filters) => {
+  console.log("figures->", figures, "filters->", filters);
   let currentFigures = figures.filter((figure: Figure) => {
-    if (!filters.colors.includes(figure.color)) return false;
-    if (!filters.forms.includes(figure.form)) return false;
+    if (filters.colors.includes(figure.color)) return false;
+    if (filters.forms.includes(figure.form)) return false;
     if (figure.dark !== null) {
-      return filters.dark === true ? figure.dark : !figure.dark;
+      return filters.dark === figure.dark;
     }
     return true;
   });
-
-  dispatch(actions.changeFigures(currentFigures));
+  return currentFigures;
 };

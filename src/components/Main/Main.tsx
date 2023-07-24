@@ -1,17 +1,19 @@
 import styles from "./Main.module.scss";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { State } from "../../types/store";
+import { UseFilters } from "../../hooks/UseFilters";
 import { useDispatch } from "react-redux";
+import { actions } from "../../store/figures";
 import { useEffect } from "react";
-import { useFilters } from "../../hooks/useFilters";
 
 export const Main: React.FC = () => {
-  const dispatch = useDispatch();
   const { figures } = useSelector((state: State) => state.figures);
-  const { filters } = useSelector((state: State) => state.filters);
+  const { filters } = useSelector((state: State) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    useFilters(); // need fix
+    let currentFigures = UseFilters(figures, filters);
+    dispatch(actions.changeFigures(currentFigures));
   }, [filters]);
 
   return (
