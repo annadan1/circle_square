@@ -1,7 +1,7 @@
 {
   "name": "circle_square",
   "version": "0.1.0",
-  "private": true,
+  "main": "./src/index.tsx",
   "homepage": "https://annadan1.github.io/circle_square/",
   "scripts": {
     "start": "react-scripts start",
