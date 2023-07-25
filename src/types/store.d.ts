@@ -3,7 +3,7 @@ export interface Figures {
 }
 
 export interface Filters {
-  forms: string[];
+  figures: string[];
   colors: string[];
   dark: null | boolean;
   columns: number;

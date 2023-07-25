@@ -6,13 +6,21 @@ import styles from "./BurgerMenu.module.scss";
 import { InputForColumn } from "../../Filters/InputForColumn/InputForColumn";
 import useOutsideClick from "../../../hooks/useOnclickOutside";
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { actions } from "../../../store/filters";
 
 export const BurgerMenu: React.FC = () => {
+  const dispatch = useDispatch();
   const [active, setActive] = useState<boolean>(false);
   const ref = useRef(null);
 
   const handleClickOutside = () => {
     setActive(false);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let color = e.target.id;
+    dispatch(actions.changeColors(color));
   };
 
   useOutsideClick(ref, handleClickOutside);
@@ -22,7 +30,7 @@ export const BurgerMenu: React.FC = () => {
       <BurgerButton handleClick={() => setActive((prev) => !prev)} />
       {active && (
         <div className={styles.menu}>
-          <div className={styles.section}>
+          <div className={styles.section} onChange={handleChange}>
             <Checkbox id="red" text="красный" />
             <Checkbox id="green" text="зеленый" />
             <Checkbox id="blue" text="синий" />

@@ -15,5 +15,5 @@ const figuresSlice = createSlice({
   },
 });
 
-export const {actions} = figuresSlice;
+export const { actions } = figuresSlice;
 export default figuresSlice.reducer;
