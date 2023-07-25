@@ -18,13 +18,21 @@ export const Main: React.FC = () => {
     dispatch(actions.changeFigures(currentFigures));
   }, [filters]);
 
+  const size = (document.documentElement.clientWidth - 200) / filters.columns;
+  const gridColumns = {
+    gridTemplateColumns: `repeat(${filters.columns}, 1fr)`,
+  };
+  const styleForFigure = {
+    width: size,
+    height: size,
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={gridColumns}>
       {figures.map((el, id) => {
         const color = el.dark ? styles[`dark-${el.color}`] : styles[el.color];
-        return (
-          <div key={id} className={`${styles[el.form] + " " + color}`}></div>
-        );
+        const style = `${styles.figure} ${styles[el.form]} ${color}`;
+        return <div key={id} className={style} style={styleForFigure}></div>;
       })}
     </div>
   );
